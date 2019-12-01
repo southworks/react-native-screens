@@ -135,6 +135,7 @@
       [navbar setTitleTextAttributes:attrs];
     }
 
+#if !TARGET_OS_TV
     if (@available(iOS 11.0, *)) {
       if (config.largeTitle && (config.largeTitleFontFamily || config.largeTitleFontSize || config.titleColor)) {
         NSMutableDictionary *largeAttrs = [NSMutableDictionary new];
@@ -150,6 +151,7 @@
         [navbar setLargeTitleTextAttributes:largeAttrs];
       }
     }
+#endif
   }
 }
 
@@ -190,6 +192,7 @@
   }
 
   [navctr setNavigationBarHidden:shouldHide animated:YES];
+#if !TARGET_OS_TV
   navctr.interactivePopGestureRecognizer.enabled = config.gestureEnabled;
 #ifdef __IPHONE_13_0
   if (@available(iOS 13.0, *)) {
@@ -228,6 +231,7 @@
     }
     navitem.largeTitleDisplayMode = config.largeTitle ? UINavigationItemLargeTitleDisplayModeAlways : UINavigationItemLargeTitleDisplayModeNever;
   }
+#endif
 #ifdef __IPHONE_13_0
   if (@available(iOS 13.0, *)) {
     UINavigationBarAppearance *appearance = [UINavigationBarAppearance new];

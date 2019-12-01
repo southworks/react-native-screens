@@ -36,7 +36,9 @@
     _controller.delegate = self;
     _needUpdate = NO;
     [self addSubview:_controller.view];
+#if !TARGET_OS_TV
     _controller.interactivePopGestureRecognizer.delegate = self;
+#endif
 
     // we have to initialize viewControllers with a non empty array for
     // largeTitle header to render in the opened state. If it is empty
